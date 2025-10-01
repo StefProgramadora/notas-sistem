@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f4ef;
+            color: #000000;
+        }
+        h1 {
+            background-color: #f5f4ef;
+            color: #2c3e50;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+        }
+        textarea {
+            width: 50%;
+            height: 100px;
+            padding: 20px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            margin: 20px auto;
+            resize: vertical; /* Permite redimensionar verticalmente */
+        }
+        button {
+            width: 100px;
+            height: 40px;
+            font-size: 1em;
+            background-color: #272727;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        </style>
+
+
+</head>
+<body>
+    <div class="header">
+    <h1>Bem-vindo ao Note It!</h1>
+    <p>Salve, altere, exclua suas notas a qualquer momento. O poder é seu.</p>
+    </div>
+
+    <textarea id="noteContent" placeholder="Comece sua primeira nota bem aqui..."
+    style="width: 50%; height: 100px; padding: 20px; font-size: 1.1em; border: 1px solid #ccc; border-radius: 5px; display: block; margin: 20px auto; resize: vertical;"></textarea>
+
+    <button id="saveButton" style="width: 100px; height: 40px; font-size:1em; background-color: #272727; color: white; border: none; border-radius: 15px; cursor: pointer; transition: background-color 0.3s ease;">
+    Salvar Nota
+    </button>
+
+    <button id="LimparButton" style="width: 100px; height: 40px; font-size:1em; background-color: #272727; color: white; border: none; border-radius: 15px; cursor: pointer; transition: background-color 0.3s ease;">
+    Limpar Nota
+    </button>
+
+    <div class="footer">
+      <p style="text-align:center">Note It™ 2025 - Todos os direitos reservados</p>
+
+    <script>
+        // Função para salvar a nota no armazenamento local
+        function saveNote() {
+            const content = document.getElementById('saveButton').value;
+            localStorage.setItem('userNote', content);
+            alert('Nota salva localmente!');
+        }
+
+        // Adiciona o evento de clique ao botão
+        document.getElementById('saveButton').addEventListener('click', saveNote);
+
+        // Design para o botão ao passar o mouse
+        document.getElementById('saveButton').addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#555';
+        });
+
+        document.getElementById('saveButton').addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#272727';
+        });
+
+        // Deasign para o botão Limpar ao passar o mouse
+        document.getElementById('LimparButton').addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#555';
+        });
+
+        document.getElementById('LimparButton').addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#272727';
+        });
+
+        // Função para limpar o campo de texto
+        document.getElementById('LimparButton').addEventListener('click', function()    {
+            document.getElementById('noteContent').value = '';
+        });
+
+        // Limpar o campo de texto após salvar
+        document.getElementById('saveButton').addEventListener('click', function() {
+            document.getElementById('noteContent').value = '';
+        });
+
+    </script>
+</body>
+</html>
